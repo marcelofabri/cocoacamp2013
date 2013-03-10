@@ -23,6 +23,7 @@
     NSAssert(self.rates[sourceValue.currency], @"Invalid source currency");
     NSAssert(self.rates[finalCurrency], @"Invalid final currency");
     
+    // https://openexchangerates.org/documentation#how-to-use
     CGFloat value = [self.rates[finalCurrency] doubleValue] * (1 / [self.rates[sourceValue.currency] doubleValue]);
     return [CurrencyValue currencyWithValue:value identifier:finalCurrency];
 }
@@ -36,4 +37,5 @@
     
     return marketInfo;
 }
+
 @end
