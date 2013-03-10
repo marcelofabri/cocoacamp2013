@@ -19,4 +19,8 @@
     }
     return self;
 }
+
++ (instancetype)currencyWithValue:(CGFloat)value identifier:(NSString *)currencyIdentifier {
+    return [[self alloc] initWithValue:value currency:currencyIdentifier];
+}
 @end

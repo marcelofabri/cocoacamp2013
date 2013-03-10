@@ -13,6 +13,8 @@
 @property (nonatomic, readonly) CGFloat value;
 @property (nonatomic, readonly) NSString *currency;
 
-- (instancetype)initWithValue:(CGFloat)value currency:(NSString *)currency;
+- (instancetype)initWithValue:(CGFloat)value currencyIdentifier:(NSString *)currency;
+
++ (instancetype)currencyWithValue:(CGFloat)value identifier:(NSString *)currencyIdentifier;
 
 @end

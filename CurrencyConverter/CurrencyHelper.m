@@ -79,7 +79,12 @@
     if (! attr || [[attr fileModificationDate] compare:minDate] == NSOrderedAscending) {
         [[CurrencyAPIClient sharedClient] getCurrencyMarketInfo:^(NSDictionary *info) {
             
-            [info writeToFile:path atomically:YES];
+            NSDate *timestamp = [NSDate dateWithTimeIntervalSinceReferenceDate:[info[@"timestamp"] doubleValue]];
+ 
+            NSMutableDictionary *updatedInfo = [info mutableCopy];
+            updatedInfo[@"timestamp"] = timestamp;
+            
+            [updatedInfo writeToFile:path atomically:YES];
             
             CurrencyMarketInfo *marketInfo = [CurrencyMarketInfo marketInfoWithTimeStamp:info[@"timestamp"]
                                                                             baseCurrency:info[@"base"] rates:info[@"rates"]];

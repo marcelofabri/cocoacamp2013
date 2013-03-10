@@ -29,7 +29,7 @@
     }];
     
     [[CurrencyHelper sharedHelper] getCurrencyMarketInfo:^(CurrencyMarketInfo *info) {
-        CurrencyValue *value = [info convertValue:[[CurrencyValue alloc] initWithValue:1 currency:@"USD"] toCurrency:@"BRL"];
+        CurrencyValue *value = [info convertValue:[CurrencyValue currencyWithValue:1 identifier:@"EUR"] toCurrency:@"BRL"];
         NSLog(@"%f", value.value);
     } failure:^(NSError *err) {
         NSLog(@"%@", err);

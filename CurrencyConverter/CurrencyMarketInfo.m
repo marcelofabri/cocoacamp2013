@@ -23,8 +23,8 @@
     NSAssert(self.rates[sourceValue.currency], @"Invalid source currency");
     NSAssert(self.rates[finalCurrency], @"Invalid final currency");
     
-    CGFloat value = [self.rates[finalCurrency] floatValue] * (1 / [self.rates[sourceValue.currency] floatValue]);
-    return [[CurrencyValue alloc] initWithValue:value currency:finalCurrency];
+    CGFloat value = [self.rates[finalCurrency] doubleValue] * (1 / [self.rates[sourceValue.currency] doubleValue]);
+    return [CurrencyValue currencyWithValue:value identifier:finalCurrency];
 }
 
 + (CurrencyMarketInfo *)marketInfoWithTimeStamp:(NSDate *)timestamp baseCurrency:(NSString *)baseCurrency rates:(NSDictionary *)rates {
