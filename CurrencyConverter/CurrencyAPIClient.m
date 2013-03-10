@@ -41,21 +41,19 @@ static NSString * const kOpenExchangeAppId = @"06840bce5d424835a14be156a02c53f1"
 }
 
 + (NSURL *)authenticatedAPIURLByAddingPath:(NSString *)path {
-    return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@?%@", kOpenExchangeBaseURL, path, kOpenExchangeAppId]];
+    return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@?app_id=%@", kOpenExchangeBaseURL, path, kOpenExchangeAppId]];
 }
 
-- (void)getCurrencies:(void (^)(NSDictionary *))success failure:(void (^)(NSError *))failure {
-    NSURLRequest *req = [[NSURLRequest alloc] initWithURL:[[self class] APIURLByAddingPath:@"currencies.json"]];
-    
-    [NSURLConnection sendAsynchronousRequest:req queue:self.processingQueue completionHandler:^(NSURLResponse *resp, NSData *data, NSError *err) {
+- (void)fetchJSONRequest:(NSURLRequest *)request success:(void (^)(id))success failure:(void (^)(NSError *))failure {
+    [NSURLConnection sendAsynchronousRequest:request queue:self.processingQueue completionHandler:^(NSURLResponse *resp, NSData *data, NSError *err) {
         if ([data length] > 0 && ! err) {
             NSError *parseError = nil;
-            NSDictionary *currencies = [NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
+            id result = [NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
             
-            if (currencies) {
+            if (result) {
                 if (success) {
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        success(currencies);
+                        success(result);
                     });
                 }
             } else if (parseError) {
@@ -69,6 +67,17 @@ static NSString * const kOpenExchangeAppId = @"06840bce5d424835a14be156a02c53f1"
             });
         }
     }];
+}
+- (void)getCurrencies:(void (^)(NSDictionary *))success failure:(void (^)(NSError *))failure {
+    NSURLRequest *req = [[NSURLRequest alloc] initWithURL:[[self class] APIURLByAddingPath:@"currencies.json"]];
+    
+    [self fetchJSONRequest:req success:success failure:failure];
+}
+
+- (void)getCurrencyMarketInfo:(void (^)(NSDictionary *))success failure:(void (^)(NSError *))failure {
+    NSURLRequest *req = [[NSURLRequest alloc] initWithURL:[[self class] authenticatedAPIURLByAddingPath:@"latest.json"]];
+    
+    [self fetchJSONRequest:req success:success failure:failure];
 }
 
 @end

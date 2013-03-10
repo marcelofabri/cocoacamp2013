@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+@class CurrencyMarketInfo;
+
 @interface CurrencyHelper : NSObject
 
 + (instancetype) sharedHelper;
 - (void)getCurrencies:(void (^)(NSDictionary *))success failure:(void (^)(NSError *))failure;
-
+- (void)getCurrencyMarketInfo:(void (^)(CurrencyMarketInfo *))success failure:(void (^)(NSError *))failure;
 @end

@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 #import "CurrencyHelper.h"
+#import "CurrencyMarketInfo.h"
+#import "CurrencyValue.h"
 
 @interface ViewController ()
 
@@ -24,6 +26,13 @@
         NSLog(@"%@", currencies);
     } failure:^(NSError *error) {
         NSLog(@"%@", error);
+    }];
+    
+    [[CurrencyHelper sharedHelper] getCurrencyMarketInfo:^(CurrencyMarketInfo *info) {
+        CurrencyValue *value = [info convertValue:[[CurrencyValue alloc] initWithValue:1 currency:@"USD"] toCurrency:@"BRL"];
+        NSLog(@"%f", value.value);
+    } failure:^(NSError *err) {
+        NSLog(@"%@", err);
     }];
 }
 

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D493D77216EC0AC800DCC348 /* CurrencyMarketInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D493D77116EC0AC800DCC348 /* CurrencyMarketInfo.m */; };
+		D493D77516EC0BAB00DCC348 /* CurrencyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = D493D77416EC0BAB00DCC348 /* CurrencyValue.m */; };
 		D49ACA4A16E2FAAF0079AB7D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D49ACA4916E2FAAF0079AB7D /* UIKit.framework */; };
 		D49ACA4C16E2FAAF0079AB7D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D49ACA4B16E2FAAF0079AB7D /* Foundation.framework */; };
 		D49ACA4E16E2FAAF0079AB7D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D49ACA4D16E2FAAF0079AB7D /* CoreGraphics.framework */; };
@@ -23,6 +25,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D493D77016EC0AC800DCC348 /* CurrencyMarketInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyMarketInfo.h; sourceTree = "<group>"; };
+		D493D77116EC0AC800DCC348 /* CurrencyMarketInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyMarketInfo.m; sourceTree = "<group>"; };
+		D493D77316EC0BAB00DCC348 /* CurrencyValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyValue.h; sourceTree = "<group>"; };
+		D493D77416EC0BAB00DCC348 /* CurrencyValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyValue.m; sourceTree = "<group>"; };
 		D49ACA4616E2FAAF0079AB7D /* CurrencyConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D49ACA4916E2FAAF0079AB7D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D49ACA4B16E2FAAF0079AB7D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -99,6 +105,10 @@
 				D49ACA6D16E2FACF0079AB7D /* CurrencyAPIClient.m */,
 				D49ACA6F16E303780079AB7D /* CurrencyHelper.h */,
 				D49ACA7016E303780079AB7D /* CurrencyHelper.m */,
+				D493D77316EC0BAB00DCC348 /* CurrencyValue.h */,
+				D493D77416EC0BAB00DCC348 /* CurrencyValue.m */,
+				D493D77016EC0AC800DCC348 /* CurrencyMarketInfo.h */,
+				D493D77116EC0AC800DCC348 /* CurrencyMarketInfo.m */,
 			);
 			path = CurrencyConverter;
 			sourceTree = "<group>";
@@ -188,6 +198,8 @@
 				D49ACA6616E2FAAF0079AB7D /* ViewController.m in Sources */,
 				D49ACA6E16E2FACF0079AB7D /* CurrencyAPIClient.m in Sources */,
 				D49ACA7116E303780079AB7D /* CurrencyHelper.m in Sources */,
+				D493D77216EC0AC800DCC348 /* CurrencyMarketInfo.m in Sources */,
+				D493D77516EC0BAB00DCC348 /* CurrencyValue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +322,7 @@
 				D49ACA6B16E2FAAF0079AB7D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

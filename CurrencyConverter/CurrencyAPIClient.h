@@ -12,5 +12,6 @@
 
 + (instancetype) sharedClient;
 - (void)getCurrencies:(void (^)(NSDictionary *))success failure:(void (^)(NSError *))failure;
+- (void)getCurrencyMarketInfo:(void (^)(NSDictionary *))success failure:(void (^)(NSError *))failure;
 
 @end
