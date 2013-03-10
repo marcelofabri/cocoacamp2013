@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Marcelo Fabri. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 @class CurrencyMarketInfo;
 
 @interface CurrencyHelper : NSObject

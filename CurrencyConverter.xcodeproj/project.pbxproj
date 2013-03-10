@@ -22,6 +22,7 @@
 		D49ACA6616E2FAAF0079AB7D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D49ACA6516E2FAAF0079AB7D /* ViewController.m */; };
 		D49ACA6E16E2FACF0079AB7D /* CurrencyAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D49ACA6D16E2FACF0079AB7D /* CurrencyAPIClient.m */; };
 		D49ACA7116E303780079AB7D /* CurrencyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D49ACA7016E303780079AB7D /* CurrencyHelper.m */; };
+		D4B775AD16ED390800694ED3 /* CurrencySelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B775AC16ED390800694ED3 /* CurrencySelectorViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,8 @@
 		D49ACA6D16E2FACF0079AB7D /* CurrencyAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyAPIClient.m; sourceTree = "<group>"; };
 		D49ACA6F16E303780079AB7D /* CurrencyHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyHelper.h; sourceTree = "<group>"; };
 		D49ACA7016E303780079AB7D /* CurrencyHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyHelper.m; sourceTree = "<group>"; };
+		D4B775AB16ED390800694ED3 /* CurrencySelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencySelectorViewController.h; sourceTree = "<group>"; };
+		D4B775AC16ED390800694ED3 /* CurrencySelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencySelectorViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +103,8 @@
 				D49ACA6116E2FAAF0079AB7D /* MainStoryboard.storyboard */,
 				D49ACA6416E2FAAF0079AB7D /* ViewController.h */,
 				D49ACA6516E2FAAF0079AB7D /* ViewController.m */,
+				D4B775AB16ED390800694ED3 /* CurrencySelectorViewController.h */,
+				D4B775AC16ED390800694ED3 /* CurrencySelectorViewController.m */,
 				D49ACA5016E2FAAF0079AB7D /* Supporting Files */,
 				D49ACA6C16E2FACF0079AB7D /* CurrencyAPIClient.h */,
 				D49ACA6D16E2FACF0079AB7D /* CurrencyAPIClient.m */,
@@ -200,6 +205,7 @@
 				D49ACA7116E303780079AB7D /* CurrencyHelper.m in Sources */,
 				D493D77216EC0AC800DCC348 /* CurrencyMarketInfo.m in Sources */,
 				D493D77516EC0BAB00DCC348 /* CurrencyValue.m in Sources */,
+				D4B775AD16ED390800694ED3 /* CurrencySelectorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

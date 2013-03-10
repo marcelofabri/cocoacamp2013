@@ -10,7 +10,7 @@
 
 @implementation CurrencyValue
 
-- (instancetype) initWithValue:(CGFloat)value currency:(NSString *)currency {
+- (instancetype)initWithValue:(double)value currencyIdentifier:(NSString *)currency {
     self = [super init];
     
     if (self) {
@@ -20,7 +20,7 @@
     return self;
 }
 
-+ (instancetype)currencyWithValue:(CGFloat)value identifier:(NSString *)currencyIdentifier {
-    return [[self alloc] initWithValue:value currency:currencyIdentifier];
++ (instancetype)currencyWithValue:(double)value identifier:(NSString *)currencyIdentifier {
+    return [[self alloc] initWithValue:value currencyIdentifier:currencyIdentifier];
 }
 @end

@@ -10,8 +10,17 @@
 #import "CurrencyHelper.h"
 #import "CurrencyMarketInfo.h"
 #import "CurrencyValue.h"
+#import "CurrencySelectorViewController.h"
 
-@interface ViewController ()
+@interface ViewController () <CurrencySelectorDelegate>
+
+@property (weak, nonatomic) IBOutlet UILabel *sourceCurrencyLabel;
+@property (weak, nonatomic) IBOutlet UILabel *finalCurrencyLabel;
+
+@property (nonatomic, strong) NSDictionary *currencies;
+
+@property (nonatomic, copy) NSString *sourceCurrency;
+@property (nonatomic, copy) NSString *finalCurrency;
 
 @end
 
@@ -23,7 +32,18 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     [[CurrencyHelper sharedHelper] getCurrencies:^(NSDictionary *currencies) {
-        NSLog(@"%@", currencies);
+        self.currencies = currencies;
+        
+        self.sourceCurrency = [[NSLocale currentLocale] objectForKey:NSLocaleCurrencyCode];
+        self.sourceCurrencyLabel.text = currencies[self.sourceCurrency];
+        
+        if ([self.sourceCurrency isEqualToString:@"USD"]) {
+            self.finalCurrency = @"EUR";
+        } else {
+            self.finalCurrency = @"USD";            
+        }
+        
+        self.finalCurrencyLabel.text = currencies[self.finalCurrency];        
     } failure:^(NSError *error) {
         NSLog(@"%@", error);
     }];
@@ -34,12 +54,45 @@
     } failure:^(NSError *err) {
         NSLog(@"%@", err);
     }];
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark Gesture recognizers actions
+- (IBAction)viewTapped:(UITapGestureRecognizer *)sender {
+    [self.view endEditing:YES];
+}
+
+- (IBAction)currencyLabelLongPressed:(UILongPressGestureRecognizer *)sender {
+    if (sender.state == UIGestureRecognizerStateBegan) {
+        CurrencySelectorViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"currencySelector"];
+        vc.availableCurrencies = self.currencies;
+        vc.delegate = self;
+        
+        if (sender.view == self.sourceCurrencyLabel) {
+            vc.mode = CurrencySelectorModeSource;
+        } else {
+            vc.mode = CurrencySelectorModeFinal;
+        }
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+}
+
+#pragma mark Currency selector delegate
+- (void)currencySelector:(CurrencySelectorViewController *)selector didSelectCurrency:(NSString *)currencyCode {
+    NSLog(@"%@", currencyCode);
+    if (selector.mode == CurrencySelectorModeSource) {
+        self.sourceCurrencyLabel.text = self.currencies[currencyCode];
+    } else {
+        self.finalCurrencyLabel.text = self.currencies[currencyCode];
+    }
 }
 
 @end

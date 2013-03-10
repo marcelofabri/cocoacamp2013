@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Marcelo Fabri. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 @class CurrencyValue;
 
 @interface CurrencyMarketInfo : NSObject
@@ -17,4 +15,5 @@
 - (CurrencyValue *)convertValue:(CurrencyValue *)sourceValue toCurrency:(NSString *)finalCurrency;
 
 + (CurrencyMarketInfo *)marketInfoWithTimeStamp:(NSDate *)timestamp baseCurrency:(NSString *)baseCurrency rates:(NSDictionary *)rates;
+
 @end

@@ -36,7 +36,7 @@
     NSDate *date = [NSDate date];
     
     NSDateComponents *components = [[NSDateComponents alloc] init];
-    [components setHour:-2];
+    [components setYear:-2];
     
     NSDate *minDate = [calendar dateByAddingComponents:components toDate:date options:0];
     
@@ -64,7 +64,7 @@
 - (void)getCurrencyMarketInfo:(void (^)(CurrencyMarketInfo *))success failure:(void (^)(NSError *))failure {
     NSFileManager *manager = [[NSFileManager alloc] init];
     
-    NSString *path = [[self applicationCacheDirectory] stringByAppendingPathComponent:@"currencies.plist"];
+    NSString *path = [[self applicationCacheDirectory] stringByAppendingPathComponent:@"rates.plist"];
     NSError *err = nil;
     NSDictionary *attr = [manager attributesOfItemAtPath:path error:&err];
     
@@ -72,7 +72,7 @@
     NSDate *date = [NSDate date];
     
     NSDateComponents *components = [[NSDateComponents alloc] init];
-    [components setMinute:-30];
+    [components setYear:-30];
     
     NSDate *minDate = [calendar dateByAddingComponents:components toDate:date options:0];
     
