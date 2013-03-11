@@ -73,14 +73,19 @@
 - (IBAction)currencyLabelLongPressed:(UILongPressGestureRecognizer *)sender {
     if (sender.state == UIGestureRecognizerStateBegan) {
         CurrencySelectorViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"currencySelector"];
-        vc.availableCurrencies = self.currencies;
+
+        NSMutableDictionary *currencies = [self.currencies mutableCopy];
         vc.delegate = self;
         
         if (sender.view == self.sourceCurrencyLabel) {
             vc.mode = CurrencySelectorModeSource;
+            [currencies removeObjectForKey:self.finalCurrency];
         } else {
             vc.mode = CurrencySelectorModeFinal;
+            [currencies removeObjectForKey:self.sourceCurrency];
         }
+        
+        vc.availableCurrencies = currencies;
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
