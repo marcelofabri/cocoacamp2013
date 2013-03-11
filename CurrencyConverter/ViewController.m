@@ -11,16 +11,20 @@
 #import "CurrencyMarketInfo.h"
 #import "CurrencyValue.h"
 #import "CurrencySelectorViewController.h"
+#import "CurrencyRatesViewController.h"
 
 @interface ViewController () <CurrencySelectorDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *sourceCurrencyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *finalCurrencyLabel;
+@property (weak, nonatomic) IBOutlet UIButton *convertButton;
 
 @property (nonatomic, strong) NSDictionary *currencies;
 
 @property (nonatomic, copy) NSString *sourceCurrency;
 @property (nonatomic, copy) NSString *finalCurrency;
+
+@property (nonatomic, strong) CurrencyMarketInfo *marketInfo;
 
 @end
 
@@ -30,6 +34,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    UIImage *img = [[UIImage imageNamed:@"confirm_button"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 10, 0, 10)];
+    [self.convertButton setBackgroundImage:img forState:UIControlStateNormal];
     
     [[CurrencyHelper sharedHelper] getCurrencies:^(NSDictionary *currencies) {
         self.currencies = currencies;
@@ -49,8 +56,7 @@
     }];
     
     [[CurrencyHelper sharedHelper] getCurrencyMarketInfo:^(CurrencyMarketInfo *info) {
-        CurrencyValue *value = [info convertValue:[CurrencyValue currencyWithValue:1 identifier:@"EUR"] toCurrency:@"BRL"];
-        NSLog(@"%f", value.value);
+        self.marketInfo = info;
     } failure:^(NSError *err) {
         NSLog(@"%@", err);
     }];
@@ -63,6 +69,15 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    CurrencyRatesViewController *vc = segue.destinationViewController;
+    
+    vc.availableCurrencies = [[self.currencies allKeys] sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        return [self.currencies[obj1] compare:self.currencies[obj2] options:NSCaseInsensitiveSearch];
+    }];
+    vc.marketInfo = self.marketInfo;
 }
 
 #pragma mark Gesture recognizers actions
