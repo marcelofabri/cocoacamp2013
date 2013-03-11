@@ -1150,6 +1150,64 @@
 			path = flags;
 			sourceTree = "<group>";
 		};
+		D40A8CCF16ED9340009E9BCA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D40A8CBF16ED7EC1009E9BCA /* confirm_button.png */,
+				D40A8CC016ED7EC1009E9BCA /* confirm_button@2x.png */,
+				D40A89FA16ED7152009E9BCA /* flags */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		D40A8CD016ED936A009E9BCA /* Business */ = {
+			isa = PBXGroup;
+			children = (
+				D49ACA6C16E2FACF0079AB7D /* CurrencyAPIClient.h */,
+				D49ACA6D16E2FACF0079AB7D /* CurrencyAPIClient.m */,
+				D49ACA6F16E303780079AB7D /* CurrencyHelper.h */,
+				D49ACA7016E303780079AB7D /* CurrencyHelper.m */,
+				D493D77316EC0BAB00DCC348 /* CurrencyValue.h */,
+				D493D77416EC0BAB00DCC348 /* CurrencyValue.m */,
+				D493D77016EC0AC800DCC348 /* CurrencyMarketInfo.h */,
+				D493D77116EC0AC800DCC348 /* CurrencyMarketInfo.m */,
+			);
+			name = Business;
+			sourceTree = "<group>";
+		};
+		D40A8CD116ED9374009E9BCA /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D49ACA6416E2FAAF0079AB7D /* ViewController.h */,
+				D49ACA6516E2FAAF0079AB7D /* ViewController.m */,
+				D4B775AB16ED390800694ED3 /* CurrencySelectorViewController.h */,
+				D4B775AC16ED390800694ED3 /* CurrencySelectorViewController.m */,
+				D40A8CC916ED8429009E9BCA /* CurrencyRatesViewController.h */,
+				D40A8CCA16ED8429009E9BCA /* CurrencyRatesViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		D40A8CD216ED937B009E9BCA /* App Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				D49ACA5816E2FAAF0079AB7D /* AppDelegate.h */,
+				D49ACA5916E2FAAF0079AB7D /* AppDelegate.m */,
+			);
+			name = "App Delegate";
+			sourceTree = "<group>";
+		};
+		D40A8CD316ED9384009E9BCA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D40A8CC616ED83BE009E9BCA /* CurrencyCollectionViewCell.h */,
+				D40A8CC716ED83BF009E9BCA /* CurrencyCollectionViewCell.m */,
+				D40A8CCC16ED90A0009E9BCA /* CurrencyCollectionViewHeader.h */,
+				D40A8CCD16ED90A0009E9BCA /* CurrencyCollectionViewHeader.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		D49ACA3D16E2FAAF0079AB7D = {
 			isa = PBXGroup;
 			children = (
@@ -1180,31 +1238,13 @@
 		D49ACA4F16E2FAAF0079AB7D /* CurrencyConverter */ = {
 			isa = PBXGroup;
 			children = (
-				D49ACA5816E2FAAF0079AB7D /* AppDelegate.h */,
-				D49ACA5916E2FAAF0079AB7D /* AppDelegate.m */,
-				D49ACA6116E2FAAF0079AB7D /* MainStoryboard.storyboard */,
-				D49ACA6416E2FAAF0079AB7D /* ViewController.h */,
-				D49ACA6516E2FAAF0079AB7D /* ViewController.m */,
-				D4B775AB16ED390800694ED3 /* CurrencySelectorViewController.h */,
-				D4B775AC16ED390800694ED3 /* CurrencySelectorViewController.m */,
-				D40A8CC916ED8429009E9BCA /* CurrencyRatesViewController.h */,
-				D40A8CCA16ED8429009E9BCA /* CurrencyRatesViewController.m */,
+				D40A8CD216ED937B009E9BCA /* App Delegate */,
+				D40A8CD016ED936A009E9BCA /* Business */,
+				D40A8CD116ED9374009E9BCA /* View Controllers */,
+				D40A8CD316ED9384009E9BCA /* View */,
 				D49ACA5016E2FAAF0079AB7D /* Supporting Files */,
-				D49ACA6C16E2FACF0079AB7D /* CurrencyAPIClient.h */,
-				D49ACA6D16E2FACF0079AB7D /* CurrencyAPIClient.m */,
-				D49ACA6F16E303780079AB7D /* CurrencyHelper.h */,
-				D49ACA7016E303780079AB7D /* CurrencyHelper.m */,
-				D493D77316EC0BAB00DCC348 /* CurrencyValue.h */,
-				D493D77416EC0BAB00DCC348 /* CurrencyValue.m */,
-				D493D77016EC0AC800DCC348 /* CurrencyMarketInfo.h */,
-				D493D77116EC0AC800DCC348 /* CurrencyMarketInfo.m */,
-				D40A8CC616ED83BE009E9BCA /* CurrencyCollectionViewCell.h */,
-				D40A8CC716ED83BF009E9BCA /* CurrencyCollectionViewCell.m */,
-				D40A8CCC16ED90A0009E9BCA /* CurrencyCollectionViewHeader.h */,
-				D40A8CCD16ED90A0009E9BCA /* CurrencyCollectionViewHeader.m */,
-				D40A8CBF16ED7EC1009E9BCA /* confirm_button.png */,
-				D40A8CC016ED7EC1009E9BCA /* confirm_button@2x.png */,
-				D40A89FA16ED7152009E9BCA /* flags */,
+				D49ACA6116E2FAAF0079AB7D /* MainStoryboard.storyboard */,
+				D40A8CCF16ED9340009E9BCA /* Resources */,
 			);
 			path = CurrencyConverter;
 			sourceTree = "<group>";
