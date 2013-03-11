@@ -8,6 +8,7 @@
 
 #import "CurrencyRatesViewController.h"
 #import "CurrencyCollectionViewCell.h"
+#import "CurrencyCollectionViewHeader.h"
 #import "CurrencyMarketInfo.h"
 #import "CurrencyValue.h"
 
@@ -67,6 +68,19 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return [self.availableCurrencies count];
 }
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    CurrencyCollectionViewHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"Header" forIndexPath:indexPath];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateStyle = NSDateFormatterShortStyle;
+    formatter.timeStyle = NSDateFormatterShortStyle;
+    
+    NSString *formattedTimeStamp = [formatter stringFromDate:self.marketInfo.timestamp];
+    header.timestampLabel.text = [NSString stringWithFormat:@"Rates calculed on %@", formattedTimeStamp];
+    return header;
+}
+
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     CurrencyCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];

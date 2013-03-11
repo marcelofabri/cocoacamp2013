@@ -365,6 +365,7 @@
 		D40A8CC216ED7EC1009E9BCA /* confirm_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D40A8CC016ED7EC1009E9BCA /* confirm_button@2x.png */; };
 		D40A8CC816ED83BF009E9BCA /* CurrencyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A8CC716ED83BF009E9BCA /* CurrencyCollectionViewCell.m */; };
 		D40A8CCB16ED8429009E9BCA /* CurrencyRatesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A8CCA16ED8429009E9BCA /* CurrencyRatesViewController.m */; };
+		D40A8CCE16ED90A1009E9BCA /* CurrencyCollectionViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = D40A8CCD16ED90A0009E9BCA /* CurrencyCollectionViewHeader.m */; };
 		D493D77216EC0AC800DCC348 /* CurrencyMarketInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D493D77116EC0AC800DCC348 /* CurrencyMarketInfo.m */; };
 		D493D77516EC0BAB00DCC348 /* CurrencyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = D493D77416EC0BAB00DCC348 /* CurrencyValue.m */; };
 		D49ACA4A16E2FAAF0079AB7D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D49ACA4916E2FAAF0079AB7D /* UIKit.framework */; };
@@ -744,6 +745,8 @@
 		D40A8CC716ED83BF009E9BCA /* CurrencyCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyCollectionViewCell.m; sourceTree = "<group>"; };
 		D40A8CC916ED8429009E9BCA /* CurrencyRatesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyRatesViewController.h; sourceTree = "<group>"; };
 		D40A8CCA16ED8429009E9BCA /* CurrencyRatesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyRatesViewController.m; sourceTree = "<group>"; };
+		D40A8CCC16ED90A0009E9BCA /* CurrencyCollectionViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyCollectionViewHeader.h; sourceTree = "<group>"; };
+		D40A8CCD16ED90A0009E9BCA /* CurrencyCollectionViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyCollectionViewHeader.m; sourceTree = "<group>"; };
 		D493D77016EC0AC800DCC348 /* CurrencyMarketInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyMarketInfo.h; sourceTree = "<group>"; };
 		D493D77116EC0AC800DCC348 /* CurrencyMarketInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyMarketInfo.m; sourceTree = "<group>"; };
 		D493D77316EC0BAB00DCC348 /* CurrencyValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyValue.h; sourceTree = "<group>"; };
@@ -1197,6 +1200,8 @@
 				D493D77116EC0AC800DCC348 /* CurrencyMarketInfo.m */,
 				D40A8CC616ED83BE009E9BCA /* CurrencyCollectionViewCell.h */,
 				D40A8CC716ED83BF009E9BCA /* CurrencyCollectionViewCell.m */,
+				D40A8CCC16ED90A0009E9BCA /* CurrencyCollectionViewHeader.h */,
+				D40A8CCD16ED90A0009E9BCA /* CurrencyCollectionViewHeader.m */,
 				D40A8CBF16ED7EC1009E9BCA /* confirm_button.png */,
 				D40A8CC016ED7EC1009E9BCA /* confirm_button@2x.png */,
 				D40A89FA16ED7152009E9BCA /* flags */,
@@ -1650,6 +1655,7 @@
 				D4B775AD16ED390800694ED3 /* CurrencySelectorViewController.m in Sources */,
 				D40A8CC816ED83BF009E9BCA /* CurrencyCollectionViewCell.m in Sources */,
 				D40A8CCB16ED8429009E9BCA /* CurrencyRatesViewController.m in Sources */,
+				D40A8CCE16ED90A1009E9BCA /* CurrencyCollectionViewHeader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
