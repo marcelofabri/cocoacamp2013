@@ -121,7 +121,7 @@
     formatter.timeStyle = NSDateFormatterShortStyle;
     
     NSString *formattedTimeStamp = [formatter stringFromDate:self.marketInfo.timestamp];
-    header.timestampLabel.text = [NSString stringWithFormat:@"Rates calculed on %@", formattedTimeStamp];
+    header.timestampLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Rates calculed on %@", @"Shows the rates last calculated date (the param)"), formattedTimeStamp];
     
 
     NSString *currency = self.baseValue.currency;

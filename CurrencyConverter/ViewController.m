@@ -119,7 +119,7 @@
 
 #pragma mark Currency selector delegate
 - (void)currencySelector:(CurrencySelectorViewController *)selector didSelectCurrency:(NSString *)currencyCode {
-    NSLog(@"%@", currencyCode);
+
     if (selector.mode == CurrencySelectorModeSource) {
         self.sourceCurrencyLabel.text = self.currencies[currencyCode];
         self.sourceCurrency = currencyCode;

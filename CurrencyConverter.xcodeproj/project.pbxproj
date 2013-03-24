@@ -385,6 +385,7 @@
 		D4F4382E16FEAF1E004C1710 /* textfield_backcground.png in Resources */ = {isa = PBXBuildFile; fileRef = D4F4382C16FEAF1E004C1710 /* textfield_backcground.png */; };
 		D4F4382F16FEAF1E004C1710 /* textfield_backcground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4F4382D16FEAF1E004C1710 /* textfield_backcground@2x.png */; };
 		D4F4383216FEB179004C1710 /* AmountTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F4383116FEB179004C1710 /* AmountTextField.m */; };
+		D4F4383516FEB5E9004C1710 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4F4383316FEB5E9004C1710 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -780,6 +781,7 @@
 		D4F4382D16FEAF1E004C1710 /* textfield_backcground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "textfield_backcground@2x.png"; sourceTree = "<group>"; };
 		D4F4383016FEB179004C1710 /* AmountTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmountTextField.h; sourceTree = "<group>"; };
 		D4F4383116FEB179004C1710 /* AmountTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmountTextField.m; sourceTree = "<group>"; };
+		D4F4383416FEB5E9004C1710 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1160,6 +1162,7 @@
 		D40A8CCF16ED9340009E9BCA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D4F4383316FEB5E9004C1710 /* Localizable.strings */,
 				D4F4382C16FEAF1E004C1710 /* textfield_backcground.png */,
 				D4F4382D16FEAF1E004C1710 /* textfield_backcground@2x.png */,
 				D40A8CBF16ED7EC1009E9BCA /* confirm_button.png */,
@@ -1688,6 +1691,7 @@
 				D40A8CC216ED7EC1009E9BCA /* confirm_button@2x.png in Resources */,
 				D4F4382E16FEAF1E004C1710 /* textfield_backcground.png in Resources */,
 				D4F4382F16FEAF1E004C1710 /* textfield_backcground@2x.png in Resources */,
+				D4F4383516FEB5E9004C1710 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1730,6 +1734,14 @@
 				D49ACA6216E2FAAF0079AB7D /* en */,
 			);
 			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+		D4F4383316FEB5E9004C1710 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D4F4383416FEB5E9004C1710 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
