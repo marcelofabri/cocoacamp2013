@@ -28,11 +28,14 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="1.00" minimumFontSize="17" id="w37-VM-6Kf" customClass="AmountTextField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="e.g. 1.00" minimumFontSize="17" id="w37-VM-6Kf" customClass="AmountTextField">
                                 <rect key="frame" x="85" y="94" width="123" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad" returnKeyType="done"/>
+                                <connections>
+                                    <action selector="textFieldChanged:" destination="2" eventType="editingChanged" id="NPr-xJ-Zlz"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Long press a currency to change it!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rVH-P2-g9c">
                                 <rect key="frame" x="20" y="375" width="280" height="21"/>
@@ -84,7 +87,7 @@
                                     <outletCollection property="gestureRecognizers" destination="dfB-Yn-Zyw" appends="YES" id="OMc-oX-BbU"/>
                                 </connections>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ysw-Ew-wN7">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ysw-Ew-wN7">
                                 <rect key="frame" x="20" y="144" width="280" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -341,6 +344,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
                 <relationship kind="action" name="currencyLabelLongPressed:" candidateClass="UILongPressGestureRecognizer"/>
+                <relationship kind="action" name="textFieldChanged:" candidateClass="UITextField"/>
                 <relationship kind="action" name="viewTapped:" candidateClass="UITapGestureRecognizer"/>
                 <relationship kind="outlet" name="amountTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="convertButton" candidateClass="UIButton"/>

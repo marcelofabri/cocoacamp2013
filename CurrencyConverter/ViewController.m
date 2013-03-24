@@ -105,6 +105,9 @@
         }
     }
 }
+- (IBAction)textFieldChanged:(UITextField *)sender {
+    self.convertButton.enabled = [sender.text length] > 0;
+}
 
 #pragma mark Gesture recognizers actions
 - (IBAction)viewTapped:(UITapGestureRecognizer *)sender {

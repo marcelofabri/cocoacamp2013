@@ -10,6 +10,8 @@
 #import "CurrencyAPIClient.h"
 #import "CurrencyMarketInfo.h"
 
+// TODO: Store market info and currencies in memory too, so we don't need to reach disk every time.
+
 @implementation CurrencyHelper
 
 + (instancetype) sharedHelper {
@@ -40,9 +42,9 @@
     
     NSDate *minDate = [calendar dateByAddingComponents:components toDate:date options:0];
     
-    if (! attr || [[attr fileModificationDate] compare:minDate] == NSOrderedAscending) {
+    if (! attr || [[attr fileModificationDate] compare:minDate] == NSOrderedAscending) { // is the cache too old or not exists?
         [[CurrencyAPIClient sharedClient] getCurrencies:^(NSDictionary *currencies) {
-            [currencies writeToFile:path atomically:YES];
+            [currencies writeToFile:path atomically:YES]; // caches the response on disk
             
             if (success) {
                 success(currencies);
@@ -76,7 +78,7 @@
     
     NSDate *minDate = [calendar dateByAddingComponents:components toDate:date options:0];
     
-    if (! attr || [[attr fileModificationDate] compare:minDate] == NSOrderedAscending) {
+    if (! attr || [[attr fileModificationDate] compare:minDate] == NSOrderedAscending) { // is the cache too old or not exists?
         [self getUpdatedCurrencyMarketInfo:success failure:failure];
     } else {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{ // so file I/O is not done in main queue
@@ -103,7 +105,7 @@
         NSMutableDictionary *updatedInfo = [info mutableCopy];
         updatedInfo[@"timestamp"] = timestamp;
         
-        [updatedInfo writeToFile:path atomically:YES];
+        [updatedInfo writeToFile:path atomically:YES]; // caches the response on disk
         
         CurrencyMarketInfo *marketInfo = [CurrencyMarketInfo marketInfoWithTimeStamp:timestamp
                                                                         baseCurrency:info[@"base"] rates:info[@"rates"]];

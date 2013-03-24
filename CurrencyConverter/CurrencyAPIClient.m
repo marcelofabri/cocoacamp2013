@@ -11,6 +11,7 @@
 @interface CurrencyAPIClient ()
 
 @property (nonatomic, strong) NSOperationQueue *processingQueue;
+@property (nonatomic) NSUInteger activityCount;
 
 @end
 
@@ -28,6 +29,13 @@ static NSString * const kOpenExchangeAppId = @"06840bce5d424835a14be156a02c53f1"
     return _sharedClient;
 }
 
+- (void)setActivityCount:(NSUInteger)activityCount {
+    @synchronized (self) {
+        _activityCount = MAX(activityCount, 0);
+        
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = _activityCount > 0;
+    }
+}
 - (NSOperationQueue *)processingQueue {
     if (! _processingQueue) {
         _processingQueue = [[NSOperationQueue alloc] init];
@@ -45,7 +53,11 @@ static NSString * const kOpenExchangeAppId = @"06840bce5d424835a14be156a02c53f1"
 }
 
 - (void)fetchJSONRequest:(NSURLRequest *)request success:(void (^)(id))success failure:(void (^)(NSError *))failure {
+    self.activityCount++;
+    
     [NSURLConnection sendAsynchronousRequest:request queue:self.processingQueue completionHandler:^(NSURLResponse *resp, NSData *data, NSError *err) {
+        self.activityCount--;
+        
         if ([data length] > 0 && ! err) {
             NSError *parseError = nil;
             id result = [NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
@@ -65,6 +77,7 @@ static NSString * const kOpenExchangeAppId = @"06840bce5d424835a14be156a02c53f1"
             dispatch_async(dispatch_get_main_queue(), ^{
                 failure(err);
             });
+            
         }
     }];
 }
