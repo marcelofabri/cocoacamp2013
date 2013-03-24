@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *sourceCurrencyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *finalCurrencyLabel;
 @property (weak, nonatomic) IBOutlet UIButton *convertButton;
+@property (weak, nonatomic) IBOutlet UITextField *amountTextField;
 
 @property (nonatomic, strong) NSDictionary *currencies;
 
@@ -55,14 +56,11 @@
         NSLog(@"%@", error);
     }];
     
+    // just to cache the market info, so it'll be loaded faster on anothers screens
     [[CurrencyHelper sharedHelper] getCurrencyMarketInfo:^(CurrencyMarketInfo *info) {
-        self.marketInfo = info;
     } failure:^(NSError *err) {
         NSLog(@"%@", err);
     }];
-    
-    
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -72,12 +70,37 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    CurrencyRatesViewController *vc = segue.destinationViewController;
-    
-    vc.availableCurrencies = [[self.currencies allKeys] sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-        return [self.currencies[obj1] compare:self.currencies[obj2] options:NSCaseInsensitiveSearch];
-    }];
-    vc.marketInfo = self.marketInfo;
+    if ([segue.identifier isEqualToString:@"currencySelection"]) {
+        CurrencySelectorViewController *vc = segue.destinationViewController;
+        
+        NSMutableDictionary *currencies = [self.currencies mutableCopy];
+        vc.delegate = self;
+        
+        
+        UILongPressGestureRecognizer *recognizer = sender;
+        if (recognizer.view == self.sourceCurrencyLabel) {
+            vc.mode = CurrencySelectorModeSource;
+            [currencies removeObjectForKey:self.finalCurrency];
+        } else {
+            vc.mode = CurrencySelectorModeFinal;
+            [currencies removeObjectForKey:self.sourceCurrency];
+        }
+        
+        vc.availableCurrencies = currencies;
+    } else {
+        CurrencyRatesViewController *vc = segue.destinationViewController;
+        
+        vc.availableCurrencies = [[self.currencies allKeys] sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+            return [self.currencies[obj1] compare:self.currencies[obj2] options:NSCaseInsensitiveSearch];
+        }];
+        
+        if (sender == self.convertButton) {
+            double amount = [self.amountTextField.text doubleValue];
+            CurrencyValue *value = [[CurrencyValue alloc] initWithValue:amount currencyIdentifier:self.sourceCurrency];
+            vc.baseValue = value;
+            vc.finalCurrency = self.finalCurrency;
+        }
+    }
 }
 
 #pragma mark Gesture recognizers actions
@@ -87,21 +110,7 @@
 
 - (IBAction)currencyLabelLongPressed:(UILongPressGestureRecognizer *)sender {
     if (sender.state == UIGestureRecognizerStateBegan) {
-        CurrencySelectorViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"currencySelector"];
-
-        NSMutableDictionary *currencies = [self.currencies mutableCopy];
-        vc.delegate = self;
-        
-        if (sender.view == self.sourceCurrencyLabel) {
-            vc.mode = CurrencySelectorModeSource;
-            [currencies removeObjectForKey:self.finalCurrency];
-        } else {
-            vc.mode = CurrencySelectorModeFinal;
-            [currencies removeObjectForKey:self.sourceCurrency];
-        }
-        
-        vc.availableCurrencies = currencies;
-        [self.navigationController pushViewController:vc animated:YES];
+        [self performSegueWithIdentifier:@"currencySelection" sender:sender];
     }
 }
 
@@ -110,8 +119,10 @@
     NSLog(@"%@", currencyCode);
     if (selector.mode == CurrencySelectorModeSource) {
         self.sourceCurrencyLabel.text = self.currencies[currencyCode];
+        self.sourceCurrency = currencyCode;
     } else {
         self.finalCurrencyLabel.text = self.currencies[currencyCode];
+        self.finalCurrency = currencyCode;
     }
 }
 

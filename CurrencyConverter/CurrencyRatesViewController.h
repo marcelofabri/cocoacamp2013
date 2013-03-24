@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @class CurrencyMarketInfo;
+@class CurrencyValue;
 
 @interface CurrencyRatesViewController : UICollectionViewController
 
 @property (nonatomic, strong) NSArray *availableCurrencies;
-@property (nonatomic, strong) CurrencyMarketInfo *marketInfo;
+@property (nonatomic, strong) CurrencyValue *baseValue;
+@property (nonatomic, copy) NSString *finalCurrency;
 
 @end

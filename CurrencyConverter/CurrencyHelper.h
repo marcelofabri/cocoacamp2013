@@ -13,4 +13,6 @@
 + (instancetype) sharedHelper;
 - (void)getCurrencies:(void (^)(NSDictionary *))success failure:(void (^)(NSError *))failure;
 - (void)getCurrencyMarketInfo:(void (^)(CurrencyMarketInfo *))success failure:(void (^)(NSError *))failure;
+
+- (void)getUpdatedCurrencyMarketInfo:(void (^)(CurrencyMarketInfo *))success failure:(void (^)(NSError *))failure;
 @end

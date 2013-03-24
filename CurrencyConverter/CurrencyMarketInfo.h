@@ -10,7 +10,7 @@
 
 @interface CurrencyMarketInfo : NSObject
 
-@property (nonatomic, strong) NSDate *timestamp; // when was these rates prices?
+@property (nonatomic, strong) NSDate *timestamp; // when were these rates prices valid?
 
 - (CurrencyValue *)convertValue:(CurrencyValue *)sourceValue toCurrency:(NSString *)finalCurrency;
 

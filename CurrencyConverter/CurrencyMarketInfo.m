@@ -24,7 +24,7 @@
     NSAssert(self.rates[finalCurrency], @"Invalid final currency");
     
     // https://openexchangerates.org/documentation#how-to-use
-    double value = [self.rates[finalCurrency] doubleValue] * (1 / [self.rates[sourceValue.currency] doubleValue]);
+    double value = [self.rates[finalCurrency] doubleValue] * (sourceValue.value / [self.rates[sourceValue.currency] doubleValue]);
     return [CurrencyValue currencyWithValue:value identifier:finalCurrency];
 }
 

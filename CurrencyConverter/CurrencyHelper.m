@@ -77,21 +77,7 @@
     NSDate *minDate = [calendar dateByAddingComponents:components toDate:date options:0];
     
     if (! attr || [[attr fileModificationDate] compare:minDate] == NSOrderedAscending) {
-        [[CurrencyAPIClient sharedClient] getCurrencyMarketInfo:^(NSDictionary *info) {
-            
-            NSDate *timestamp = [NSDate dateWithTimeIntervalSince1970:[info[@"timestamp"] doubleValue]];
- 
-            NSMutableDictionary *updatedInfo = [info mutableCopy];
-            updatedInfo[@"timestamp"] = timestamp;
-            
-            [updatedInfo writeToFile:path atomically:YES];
-            
-            CurrencyMarketInfo *marketInfo = [CurrencyMarketInfo marketInfoWithTimeStamp:timestamp
-                                                                            baseCurrency:info[@"base"] rates:info[@"rates"]];
-            if (success) {
-                success(marketInfo);
-            }
-        } failure:failure];
+        [self getUpdatedCurrencyMarketInfo:success failure:failure];
     } else {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{ // so file I/O is not done in main queue
             NSDictionary *info = [NSDictionary dictionaryWithContentsOfFile:path];
@@ -105,5 +91,25 @@
             }
         });
     }
+}
+
+- (void)getUpdatedCurrencyMarketInfo:(void (^)(CurrencyMarketInfo *))success failure:(void (^)(NSError *))failure {
+    NSString *path = [[self applicationCacheDirectory] stringByAppendingPathComponent:@"rates.plist"];
+    
+    [[CurrencyAPIClient sharedClient] getCurrencyMarketInfo:^(NSDictionary *info) {
+        
+        NSDate *timestamp = [NSDate dateWithTimeIntervalSince1970:[info[@"timestamp"] doubleValue]];
+        
+        NSMutableDictionary *updatedInfo = [info mutableCopy];
+        updatedInfo[@"timestamp"] = timestamp;
+        
+        [updatedInfo writeToFile:path atomically:YES];
+        
+        CurrencyMarketInfo *marketInfo = [CurrencyMarketInfo marketInfoWithTimeStamp:timestamp
+                                                                        baseCurrency:info[@"base"] rates:info[@"rates"]];
+        if (success) {
+            success(marketInfo);
+        }
+    } failure:failure];
 }
 @end
