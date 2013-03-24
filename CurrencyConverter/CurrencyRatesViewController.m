@@ -113,7 +113,8 @@
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-    CurrencyCollectionViewHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"Header" forIndexPath:indexPath];
+    CurrencyCollectionViewHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:kind
+                                                                              withReuseIdentifier:@"Header" forIndexPath:indexPath];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateStyle = NSDateFormatterShortStyle;
@@ -121,6 +122,24 @@
     
     NSString *formattedTimeStamp = [formatter stringFromDate:self.marketInfo.timestamp];
     header.timestampLabel.text = [NSString stringWithFormat:@"Rates calculed on %@", formattedTimeStamp];
+    
+
+    NSString *currency = self.baseValue.currency;
+    header.flagImageView.image = [UIImage imageNamed:currency] ? : [UIImage imageNamed:@"unknown"];
+    header.currencyLabel.text = [NSString stringWithFormat:@"%@ (%@)", currency, self.currenciesNames[currency]];
+    
+    id languageCode = [NSLocale preferredLanguages][0];
+    NSDictionary *localeInfo = @{NSLocaleCurrencyCode : currency, NSLocaleLanguageCode : languageCode};
+    
+    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:
+                        [NSLocale localeIdentifierFromComponents:localeInfo]];
+    
+    NSNumberFormatter *fmt = [[NSNumberFormatter alloc] init];
+    fmt.numberStyle = NSNumberFormatterCurrencyStyle;
+    fmt.locale = locale;
+    
+    header.sourceCurrencyValue.text = [fmt stringFromNumber:@(self.baseValue.value)];
+    
     return header;
 }
 
@@ -134,7 +153,7 @@
     cell.rateLabel.text = self.formattedCurrencies[indexPath.row];
     
     if ([currencyCode isEqualToString:self.finalCurrency]) {
-        cell.backgroundColor = [UIColor colorWithRed:0.600 green:0.800 blue:1.000 alpha:1.000];
+        cell.backgroundColor = [UIColor colorWithRed:0.677 green:0.929 blue:0.677 alpha:1.000];
     } else {
         cell.backgroundColor = [UIColor clearColor];
     }

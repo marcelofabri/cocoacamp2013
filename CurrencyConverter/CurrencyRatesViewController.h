@@ -16,5 +16,6 @@
 @property (nonatomic, strong) NSArray *availableCurrencies;
 @property (nonatomic, strong) CurrencyValue *baseValue;
 @property (nonatomic, copy) NSString *finalCurrency;
+@property (nonatomic, strong) NSDictionary *currenciesNames;
 
 @end

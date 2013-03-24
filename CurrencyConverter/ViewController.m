@@ -70,6 +70,8 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    [self.view endEditing:YES];
+    
     if ([segue.identifier isEqualToString:@"currencySelection"]) {
         CurrencySelectorViewController *vc = segue.destinationViewController;
         
@@ -93,6 +95,7 @@
         vc.availableCurrencies = [[self.currencies allKeys] sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
             return [self.currencies[obj1] compare:self.currencies[obj2] options:NSCaseInsensitiveSearch];
         }];
+        vc.currenciesNames = self.currencies;
         
         if (sender == self.convertButton) {
             double amount = [self.amountTextField.text doubleValue];

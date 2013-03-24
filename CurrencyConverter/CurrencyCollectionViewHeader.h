@@ -10,5 +10,8 @@
 
 @interface CurrencyCollectionViewHeader : UICollectionReusableView
 
+@property (weak, nonatomic) IBOutlet UILabel *sourceCurrencyValue;
 @property (weak, nonatomic) IBOutlet UILabel *timestampLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *flagImageView;
+@property (weak, nonatomic) IBOutlet UILabel *currencyLabel;
 @end
