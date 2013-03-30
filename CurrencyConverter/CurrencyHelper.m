@@ -12,7 +12,11 @@
 
 // TODO: Store market info and currencies in memory too, so we don't need to reach disk every time.
 
+// This class caches the JSONs responses in cache folder manually. This is made to not depend on API's cache policies to evict loading data all the time (and not reach the free requests limit)
 @implementation CurrencyHelper
+
+static const CGFloat kCurrenciesCacheDurationInMinutes = 30;
+static const CGFloat kMarketInfoCacheDurationInMinutes = 30;
 
 + (instancetype) sharedHelper {
     static dispatch_once_t onceToken;
@@ -38,7 +42,7 @@
     NSDate *date = [NSDate date];
     
     NSDateComponents *components = [[NSDateComponents alloc] init];
-    [components setYear:-2];
+    [components setMinute:-kCurrenciesCacheDurationInMinutes];
     
     NSDate *minDate = [calendar dateByAddingComponents:components toDate:date options:0];
     
@@ -74,7 +78,7 @@
     NSDate *date = [NSDate date];
     
     NSDateComponents *components = [[NSDateComponents alloc] init];
-    [components setYear:-30];
+    [components setMinute:-kMarketInfoCacheDurationInMinutes];
     
     NSDate *minDate = [calendar dateByAddingComponents:components toDate:date options:0];
     

@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Marcelo Fabri. All rights reserved.
 //
 
+// Encapsulates a value on a certain currency.
 @interface CurrencyValue : NSObject
 
 @property (nonatomic, readonly) double value;

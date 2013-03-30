@@ -12,9 +12,10 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.background = [[UIImage imageNamed:@"textfield_backcground"] resizableImageWithCapInsets:UIEdgeInsetsMake(7, 4, 3, 4)];
+    self.background = [[UIImage imageNamed:@"textfield_background"] resizableImageWithCapInsets:UIEdgeInsetsMake(7, 4, 3, 4)];
 }
 
+// adds a spacing before text
 - (CGRect)textRectForBounds:(CGRect)bounds {
     return CGRectInset(bounds, 10, 10);
 }

@@ -44,8 +44,9 @@
 - (void)setAvailableCurrencies:(NSDictionary *)availableCurrencies {
     _availableCurrencies = [availableCurrencies copy];
     
-     self.sortedCurrenciesKeys = [[_availableCurrencies allKeys] sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-        return [self.availableCurrencies[obj1] compare:self.availableCurrencies[obj2]];
+    // sorts the keys according the the full name
+    self.sortedCurrenciesKeys = [[_availableCurrencies allKeys] sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        return [self.availableCurrencies[obj1] localizedCompare:self.availableCurrencies[obj2]];
     }];
     
     [self createSortedSections:self.sortedCurrenciesKeys];
@@ -107,15 +108,15 @@
     
     // Configure the cell...
     NSArray *arr = tableView == self.searchDisplayController.searchResultsTableView ? self.filteredCurrencies : self.sections[indexPath.section];
-    cell.textLabel.text = self.availableCurrencies[arr[indexPath.row]];
-    cell.imageView.image = [UIImage imageNamed:arr[indexPath.row]] ? : [UIImage imageNamed:@"unknown"];
+    cell.textLabel.text = self.availableCurrencies[arr[indexPath.row]]; // the text
+    cell.imageView.image = [UIImage imageNamed:arr[indexPath.row]] ? : [UIImage imageNamed:@"unknown"]; // the flag
     
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
     if (tableView == self.tableView) {
-        if (index == 0) {
+        if (index == 0) { // search bar
             [tableView setContentOffset:CGPointZero animated:NO];
             return NSNotFound;
         }

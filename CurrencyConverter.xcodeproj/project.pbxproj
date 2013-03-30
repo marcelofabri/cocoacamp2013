@@ -378,12 +378,12 @@
 		D49ACA5E16E2FAAF0079AB7D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D49ACA5D16E2FAAF0079AB7D /* Default@2x.png */; };
 		D49ACA6016E2FAAF0079AB7D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D49ACA5F16E2FAAF0079AB7D /* Default-568h@2x.png */; };
 		D49ACA6316E2FAAF0079AB7D /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D49ACA6116E2FAAF0079AB7D /* MainStoryboard.storyboard */; };
-		D49ACA6616E2FAAF0079AB7D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D49ACA6516E2FAAF0079AB7D /* ViewController.m */; };
+		D49ACA6616E2FAAF0079AB7D /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D49ACA6516E2FAAF0079AB7D /* HomeViewController.m */; };
 		D49ACA6E16E2FACF0079AB7D /* CurrencyAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D49ACA6D16E2FACF0079AB7D /* CurrencyAPIClient.m */; };
 		D49ACA7116E303780079AB7D /* CurrencyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D49ACA7016E303780079AB7D /* CurrencyHelper.m */; };
 		D4B775AD16ED390800694ED3 /* CurrencySelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B775AC16ED390800694ED3 /* CurrencySelectorViewController.m */; };
-		D4F4382E16FEAF1E004C1710 /* textfield_backcground.png in Resources */ = {isa = PBXBuildFile; fileRef = D4F4382C16FEAF1E004C1710 /* textfield_backcground.png */; };
-		D4F4382F16FEAF1E004C1710 /* textfield_backcground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4F4382D16FEAF1E004C1710 /* textfield_backcground@2x.png */; };
+		D4F4382E16FEAF1E004C1710 /* textfield_background.png in Resources */ = {isa = PBXBuildFile; fileRef = D4F4382C16FEAF1E004C1710 /* textfield_background.png */; };
+		D4F4382F16FEAF1E004C1710 /* textfield_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4F4382D16FEAF1E004C1710 /* textfield_background@2x.png */; };
 		D4F4383216FEB179004C1710 /* AmountTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F4383116FEB179004C1710 /* AmountTextField.m */; };
 		D4F4383516FEB5E9004C1710 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4F4383316FEB5E9004C1710 /* Localizable.strings */; };
 /* End PBXBuildFile section */
@@ -769,16 +769,16 @@
 		D49ACA5D16E2FAAF0079AB7D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		D49ACA5F16E2FAAF0079AB7D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		D49ACA6216E2FAAF0079AB7D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		D49ACA6416E2FAAF0079AB7D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		D49ACA6516E2FAAF0079AB7D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D49ACA6416E2FAAF0079AB7D /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		D49ACA6516E2FAAF0079AB7D /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		D49ACA6C16E2FACF0079AB7D /* CurrencyAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyAPIClient.h; sourceTree = "<group>"; };
 		D49ACA6D16E2FACF0079AB7D /* CurrencyAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyAPIClient.m; sourceTree = "<group>"; };
 		D49ACA6F16E303780079AB7D /* CurrencyHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyHelper.h; sourceTree = "<group>"; };
 		D49ACA7016E303780079AB7D /* CurrencyHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyHelper.m; sourceTree = "<group>"; };
 		D4B775AB16ED390800694ED3 /* CurrencySelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencySelectorViewController.h; sourceTree = "<group>"; };
 		D4B775AC16ED390800694ED3 /* CurrencySelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencySelectorViewController.m; sourceTree = "<group>"; };
-		D4F4382C16FEAF1E004C1710 /* textfield_backcground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textfield_backcground.png; sourceTree = "<group>"; };
-		D4F4382D16FEAF1E004C1710 /* textfield_backcground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "textfield_backcground@2x.png"; sourceTree = "<group>"; };
+		D4F4382C16FEAF1E004C1710 /* textfield_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textfield_background.png; sourceTree = "<group>"; };
+		D4F4382D16FEAF1E004C1710 /* textfield_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "textfield_background@2x.png"; sourceTree = "<group>"; };
 		D4F4383016FEB179004C1710 /* AmountTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmountTextField.h; sourceTree = "<group>"; };
 		D4F4383116FEB179004C1710 /* AmountTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmountTextField.m; sourceTree = "<group>"; };
 		D4F4383416FEB5E9004C1710 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -1163,8 +1163,8 @@
 			isa = PBXGroup;
 			children = (
 				D4F4383316FEB5E9004C1710 /* Localizable.strings */,
-				D4F4382C16FEAF1E004C1710 /* textfield_backcground.png */,
-				D4F4382D16FEAF1E004C1710 /* textfield_backcground@2x.png */,
+				D4F4382C16FEAF1E004C1710 /* textfield_background.png */,
+				D4F4382D16FEAF1E004C1710 /* textfield_background@2x.png */,
 				D40A8CBF16ED7EC1009E9BCA /* confirm_button.png */,
 				D40A8CC016ED7EC1009E9BCA /* confirm_button@2x.png */,
 				D40A89FA16ED7152009E9BCA /* flags */,
@@ -1190,8 +1190,8 @@
 		D40A8CD116ED9374009E9BCA /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D49ACA6416E2FAAF0079AB7D /* ViewController.h */,
-				D49ACA6516E2FAAF0079AB7D /* ViewController.m */,
+				D49ACA6416E2FAAF0079AB7D /* HomeViewController.h */,
+				D49ACA6516E2FAAF0079AB7D /* HomeViewController.m */,
 				D4B775AB16ED390800694ED3 /* CurrencySelectorViewController.h */,
 				D4B775AC16ED390800694ED3 /* CurrencySelectorViewController.m */,
 				D40A8CC916ED8429009E9BCA /* CurrencyRatesViewController.h */,
@@ -1689,8 +1689,8 @@
 				D40A8CBE16ED76FD009E9BCA /* unknown.png in Resources */,
 				D40A8CC116ED7EC1009E9BCA /* confirm_button.png in Resources */,
 				D40A8CC216ED7EC1009E9BCA /* confirm_button@2x.png in Resources */,
-				D4F4382E16FEAF1E004C1710 /* textfield_backcground.png in Resources */,
-				D4F4382F16FEAF1E004C1710 /* textfield_backcground@2x.png in Resources */,
+				D4F4382E16FEAF1E004C1710 /* textfield_background.png in Resources */,
+				D4F4382F16FEAF1E004C1710 /* textfield_background@2x.png in Resources */,
 				D4F4383516FEB5E9004C1710 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1704,7 +1704,7 @@
 			files = (
 				D49ACA5616E2FAAF0079AB7D /* main.m in Sources */,
 				D49ACA5A16E2FAAF0079AB7D /* AppDelegate.m in Sources */,
-				D49ACA6616E2FAAF0079AB7D /* ViewController.m in Sources */,
+				D49ACA6616E2FAAF0079AB7D /* HomeViewController.m in Sources */,
 				D49ACA6E16E2FACF0079AB7D /* CurrencyAPIClient.m in Sources */,
 				D49ACA7116E303780079AB7D /* CurrencyHelper.m in Sources */,
 				D493D77216EC0AC800DCC348 /* CurrencyMarketInfo.m in Sources */,

@@ -22,15 +22,6 @@
 
 @implementation CurrencyRatesViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -43,11 +34,12 @@
         [weakSelf reloadCurrencies];
         [weakSelf.collectionView reloadData];
         
-        if (weakSelf.finalCurrency) {
+        if (weakSelf.finalCurrency) { // scrolls to the currency that the user selected
             NSUInteger idx = [weakSelf.availableCurrencies indexOfObject:weakSelf.finalCurrency];
             [weakSelf.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:idx inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:YES];
         }
     } failure:^(NSError *err) {
+        // TODO: Better error handling
         NSLog(@"%@", err);
     }];
     
@@ -63,11 +55,12 @@
     
     id languageCode = [NSLocale preferredLanguages][0];
     
-    if (! self.baseValue) {
+    if (! self.baseValue) { // if the user wants to see all values, use the device's currency with amount of 1
         NSString *baseCurrency = [[NSLocale currentLocale] objectForKey:NSLocaleCurrencyCode];
         self.baseValue = [CurrencyValue currencyWithValue:1 identifier:baseCurrency];
     }
     
+    // Creates the formatted currencies values before showing them, so the collection view can scroll smoothly
     for (NSString *code in self.availableCurrencies) {
         
         NSDictionary *localeInfo = @{NSLocaleCurrencyCode : code, NSLocaleLanguageCode : languageCode};
@@ -89,13 +82,14 @@
 
 - (void)refreshCurrencies:(UIRefreshControl *)refreshControl {
     
-    __weak typeof(self) weakSelf = self;
+    __weak typeof(self) weakSelf = self; // doesn't retain the view controler
     [[CurrencyHelper sharedHelper] getUpdatedCurrencyMarketInfo:^(CurrencyMarketInfo * info) {
         weakSelf.marketInfo = info;
         [weakSelf reloadCurrencies];
         [weakSelf.collectionView reloadData];
         [refreshControl endRefreshing];
     } failure:^(NSError *err) {
+        // TODO: Better error handling
         [refreshControl endRefreshing];
     }];
 }
@@ -125,7 +119,7 @@
     
 
     NSString *currency = self.baseValue.currency;
-    header.flagImageView.image = [UIImage imageNamed:currency] ? : [UIImage imageNamed:@"unknown"];
+    header.flagImageView.image = [UIImage imageNamed:currency] ? : [UIImage imageNamed:@"unknown"]; // base currency's flag
     header.currencyLabel.text = [NSString stringWithFormat:@"%@ (%@)", currency, self.currenciesNames[currency]];
     
     id languageCode = [NSLocale preferredLanguages][0];
@@ -147,12 +141,12 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     CurrencyCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
     
-    NSString *currencyCode = self.availableCurrencies[indexPath.row]; //@"BRL";
+    NSString *currencyCode = self.availableCurrencies[indexPath.row];
     
-    cell.flagImageView.image = [UIImage imageNamed:currencyCode] ? : [UIImage imageNamed:@"unknown"];
-    cell.rateLabel.text = self.formattedCurrencies[indexPath.row];
+    cell.flagImageView.image = [UIImage imageNamed:currencyCode] ? : [UIImage imageNamed:@"unknown"]; // the flag
+    cell.rateLabel.text = self.formattedCurrencies[indexPath.row]; // currency value
     
-    if ([currencyCode isEqualToString:self.finalCurrency]) {
+    if ([currencyCode isEqualToString:self.finalCurrency]) { // is this the currency that the user selected on home?
         cell.backgroundColor = [UIColor colorWithRed:0.677 green:0.929 blue:0.677 alpha:1.000];
     } else {
         cell.backgroundColor = [UIColor clearColor];

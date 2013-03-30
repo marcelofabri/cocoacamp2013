@@ -1,19 +1,19 @@
 //
-//  ViewController.m
+//  HomeViewController.m
 //  CurrencyConverter
 //
 //  Created by Marcelo Fabri on 03/03/13.
 //  Copyright (c) 2013 Marcelo Fabri. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "HomeViewController.h"
 #import "CurrencyHelper.h"
 #import "CurrencyMarketInfo.h"
 #import "CurrencyValue.h"
 #import "CurrencySelectorViewController.h"
 #import "CurrencyRatesViewController.h"
 
-@interface ViewController () <CurrencySelectorDelegate>
+@interface HomeViewController () <CurrencySelectorDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *sourceCurrencyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *finalCurrencyLabel;
@@ -29,7 +29,7 @@
 
 @end
 
-@implementation ViewController
+@implementation HomeViewController
 
 - (void)viewDidLoad
 {
@@ -42,9 +42,11 @@
     [[CurrencyHelper sharedHelper] getCurrencies:^(NSDictionary *currencies) {
         self.currencies = currencies;
         
+        // the initial source currency is the device's default currency
         self.sourceCurrency = [[NSLocale currentLocale] objectForKey:NSLocaleCurrencyCode];
         self.sourceCurrencyLabel.text = currencies[self.sourceCurrency];
         
+        // the initial final currency is dollar or euro (if the source already is dollar)
         if ([self.sourceCurrency isEqualToString:@"USD"]) {
             self.finalCurrency = @"EUR";
         } else {
@@ -53,12 +55,14 @@
         
         self.finalCurrencyLabel.text = currencies[self.finalCurrency];        
     } failure:^(NSError *error) {
+        // TODO: error handling
         NSLog(@"%@", error);
     }];
     
     // just to cache the market info, so it'll be loaded faster on anothers screens
     [[CurrencyHelper sharedHelper] getCurrencyMarketInfo:^(CurrencyMarketInfo *info) {
     } failure:^(NSError *err) {
+        // TODO: error handling
         NSLog(@"%@", err);
     }];
 }
@@ -68,6 +72,11 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+// exit segue
+- (IBAction)done:(UIStoryboardSegue *)segue {
+}
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     [self.view endEditing:YES];
@@ -80,7 +89,7 @@
         
         
         UILongPressGestureRecognizer *recognizer = sender;
-        if (recognizer.view == self.sourceCurrencyLabel) {
+        if (recognizer.view == self.sourceCurrencyLabel) { // was the segue created by which label?
             vc.mode = CurrencySelectorModeSource;
             [currencies removeObjectForKey:self.finalCurrency];
         } else {
@@ -89,7 +98,7 @@
         }
         
         vc.availableCurrencies = currencies;
-    } else {
+    } else if (! [segue.identifier isEqualToString:@"about"]) {
         CurrencyRatesViewController *vc = segue.destinationViewController;
         
         vc.availableCurrencies = [[self.currencies allKeys] sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
