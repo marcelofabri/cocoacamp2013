@@ -29,8 +29,8 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" id="qSV-Lz-agP">
-                                <rect key="frame" x="0.0" y="184" width="320" height="276"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <rect key="frame" x="0.0" y="282" width="320" height="178"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <string key="text">Developed by Marcelo Fabri (www.marcelofabri.com)
 
@@ -40,6 +40,17 @@ application process
 
 
  Rates provided by openexchangerates.org</string>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" id="lJ0-6n-b6C">
+                                <rect key="frame" x="0.0" y="152" width="320" height="70"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <string key="text">Hermes is named after the Greek God, who was the God of trades and commercy in the Greek mythology (http://en.wikipedia.org/wiki/Hermes).</string>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
@@ -58,6 +69,10 @@ application process
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Icon-72.png" id="R2w-3Y-DIi">
+                                <rect key="frame" x="124" y="62" width="72" height="72"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                     </view>
@@ -372,6 +387,9 @@ application process
             <point key="canvasLocation" x="793" y="599"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Icon-72.png" width="144" height="144"/>
+    </resources>
     <classes>
         <class className="AmountTextField" superclassName="UITextField">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AmountTextField.h"/>
@@ -398,6 +416,19 @@ application process
         <class className="CurrencySelectorViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CurrencySelectorViewController.h"/>
         </class>
+        <class className="HomeViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HomeViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="currencyLabelLongPressed:" candidateClass="UILongPressGestureRecognizer"/>
+                <relationship kind="action" name="done:" candidateClass="UIStoryboardSegue"/>
+                <relationship kind="action" name="textFieldChanged:" candidateClass="UITextField"/>
+                <relationship kind="action" name="viewTapped:" candidateClass="UITapGestureRecognizer"/>
+                <relationship kind="outlet" name="amountTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="convertButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="finalCurrencyLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sourceCurrencyLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
         <class className="UICollectionReusableView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
         </class>
@@ -412,6 +443,9 @@ application process
         </class>
         <class className="UICollectionViewLayout" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
+        </class>
+        <class className="UIStoryboardSegue" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
